@@ -1,7 +1,5 @@
-interface SectionProps {
-  content: any;
-  language: string;
-}
+import { SectionProps } from '@/types/section';
+import ImageDisplay from '@/components/ImageDisplay';
 
 export default function SupportSection({ content, language }: SectionProps) {
   return (

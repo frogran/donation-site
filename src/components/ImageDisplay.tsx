@@ -1,22 +1,29 @@
 import Image from 'next/image';
 
 interface ImageDisplayProps {
-  src: string;
+  imageName: string;
   alt: string;
   priority?: boolean;
-  height?: string; // e.g., 'h-[400px]' or 'h-[300px]'
 }
 
-export default function ImageDisplay({ src, alt, priority = false, height = 'h-[300px]' }: ImageDisplayProps) {
+export default function ImageDisplay({ imageName, alt, priority = false }: ImageDisplayProps) {
   return (
-    <div className={`relative w-full ${height} my-6 rounded-lg overflow-hidden`}>
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        priority={priority}
-        className="object-cover"
-      />
+    <div className="relative w-full aspect-auto my-6">
+      <div className="relative w-full bg-gray-50 rounded-lg overflow-hidden">
+        <Image
+          src={`/images/${imageName}.jpg`}
+          alt={alt}
+          width={800}
+          height={600}
+          priority={priority}
+          className="mx-auto"
+          style={{
+            maxHeight: '600px',
+            width: 'auto',
+            height: 'auto',
+          }}
+        />
+      </div>
     </div>
   );
 }
